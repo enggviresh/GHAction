@@ -1,4 +1,4 @@
-name: Hello GitHub Actions
+name: Static Website CI
 
 on:
   push:
@@ -6,12 +6,18 @@ on:
       - main
 
 jobs:
-  hello:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Say hello
-        run: echo "Hello Viresh, GitHub Actions is working!"
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Show repository
-        run: echo "My static website is running through GitHub Actions."
+      - name: Check HTML file
+        run: test -f index.html
+
+      - name: Check CSS file
+        run: test -f style.css
+
+      - name: Show files
+        run: ls -la
