@@ -1,4 +1,4 @@
-name: Test and Deploy Website
+name: CD
 
 on:
   push:
@@ -13,33 +13,14 @@ permissions:
   id-token: write
 
 jobs:
-
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Check HTML file
-        run: test -f index.html
-
-      - name: Check CSS file
-        run: test -f style.css
-
-
   deploy:
-    needs: test
+    runs-on: ubuntu-latest
 
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
-    runs-on: ubuntu-latest
-
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
