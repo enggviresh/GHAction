@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Say hello
-        run: echo "Hello from GitHub Actions!"
+        run: echo "Hello Viresh, GitHub Actions is working!"
 
       - name: Show repository
         run: echo "My static website is running through GitHub Actions."
