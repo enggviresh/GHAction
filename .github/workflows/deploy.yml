@@ -22,16 +22,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check HTML file
-        run: test -f index.html
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
 
-      - name: Check CSS file
-        run: test -f style.css
+      - name: Install HTML validator
+        run: pip install html5validator
 
+      - name: Validate HTML
+        run: html5validator --root .
 
   deploy:
     needs: test
@@ -44,7 +47,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
