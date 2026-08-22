@@ -22,7 +22,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -37,7 +36,6 @@ jobs:
       - name: Validate HTML
         run: html5validator --root .
 
-
   deploy:
     needs: test
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -49,7 +47,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
