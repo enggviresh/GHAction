@@ -35,3 +35,10 @@ jobs:
 
       - name: Check CSS file
         run: test -f style.css
+
+      - name: Show GitHub context
+        run: |
+          echo "Event: ${{ github.event_name }}"
+          echo "Repository: ${{ github.repository }}"
+          echo "Ref: ${{ github.ref }}"
+          echo "Actor: ${{ github.actor }}"
